@@ -1,0 +1,1 @@
+  sudo docker run -d --restart=always -p 9182:9183 flumewater_exporter --clientid 2870Y8F9CX7KT5 --clientsecret G7B8AIESCAAHP16AVDU2 --username "huagangxie+flume@gmail.com" --password "F1um31668!" --tokenfile token.txt --verbose
