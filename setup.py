@@ -10,6 +10,8 @@ setuptools.setup(
     install_requires=[
         "requests>=2.18.4",
         "prometheus_client>=0.2.0",
+        "pyjwt",
+        "pytz"
     ],
     entry_points={
         "console_scripts": [

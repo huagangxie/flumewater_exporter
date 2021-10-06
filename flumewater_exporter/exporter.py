@@ -18,7 +18,7 @@ def main():
     parser.add_argument("--clientsecret", required=True)
     parser.add_argument("--username", required=True)
     parser.add_argument("--password", required=True)
-    parser.add_argument("--tokenfile")
+    parser.add_argument("--timezone")
 
     args = parser.parse_args()
 
@@ -35,7 +35,7 @@ def main():
     api = flumewater_exporter.FlumewaterAPI(
                 clientid =args.clientid, clientsecret=args.clientsecret,
                 username =args.username, password=args.password,
-                tokenfile=args.tokenfile)
+                timezone=args.timezone)
     collector = flumewater_exporter.FlumewaterCollector(api)
 
     prometheus_client.REGISTRY.register(collector)
