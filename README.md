@@ -20,8 +20,11 @@ How to build
 
 
 Credit:
-    Get a of the code template from following two projects
+   This project reuse a lot of code from the following two projects
 
  * Eagle Exporter https://github.com/sbrudenell/eagle_exporter
  * FlumeCLI https://github.com/ScriptBlock/flumecli
+
+Reference: 
+ 
  * API Reference https://flumetech.readme.io/reference
