@@ -76,7 +76,7 @@ class API(object):
         resp = requests.request("POST", "https://api.flumetech.com/users/" + str(self.user_id)  + "/devices/" + str(device_id)  + "/query", data=payload, headers=headers)
         data = json.loads(resp.text)
         logging.debug(data)
-        if data["http_code"]==200:
+        if data["http_code"]==200 :
             result.append(data["data"][0]["perminute"][0]["value"])
             result.append(data["data"][0]["currentmonth"][0]["value"])
             return result

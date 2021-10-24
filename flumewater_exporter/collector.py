@@ -9,7 +9,7 @@ class FlumewaterCollector(object):
         self.api.credentials()
         self.api.userid()
         self._devices = self.api.device_list()
-
+    
     def make_metric(self, _is_counter, _name, _documentation, _value,
                     **_labels):
         if _is_counter:
@@ -31,17 +31,24 @@ class FlumewaterCollector(object):
         for device in self._devices:
             # query last mins and current month's usage, maybe more in the future 
             qdata = self.api.device_query(device, all=False)
-            cur_month = self.make_metric(
-                True, self._prefix + "current_month",
-                "Time the Flumewater current month usage ",
-                qdata[1]) 
-            metrics.append(cur_month)
 
-            last_min = self.make_metric(
-                False, self._prefix + "usage",
-                "current usage last one min",
-                qdata[0])
+            if qdata == None: 
+                self.api.credentials()
+                self.api.userid()
+                self._devices = self.api.device_list()
+                logging.debug("Qdata is NULL and re-register the device")
+            else :
+                cur_month = self.make_metric(
+                    True, self._prefix + "month",
+                    "current month water usage ",
+                    qdata[1]) 
+                metrics.append(cur_month)
 
-            metrics.append(last_min)
+                last_min = self.make_metric(
+                    False, self._prefix + "usage",
+                    "last one min water usage",
+                    qdata[0])
+
+                metrics.append(last_min)
 
         return metrics
