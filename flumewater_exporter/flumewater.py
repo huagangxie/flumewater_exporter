@@ -53,6 +53,7 @@ class API(object):
                 logging.debug(dataJSON["data"])
                 if bridge["type"] == 2:
                     devices.append(bridge["id"])
+                logging.debug("Executed device search")
         return devices
 
     def device_query(self, device_id, all=False, refresh=False):

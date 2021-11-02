@@ -41,13 +41,13 @@ class FlumewaterCollector(object):
                 cur_month = self.make_metric(
                     True, self._prefix + "month",
                     "current month water usage ",
-                    qdata[1]) 
+                    qdata[1], device_id=device) 
                 metrics.append(cur_month)
 
                 last_min = self.make_metric(
                     False, self._prefix + "usage",
                     "last one min water usage",
-                    qdata[0])
+                    qdata[0], device_id=device)
 
                 metrics.append(last_min)
 
